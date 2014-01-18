@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper]{amsart}
+
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[american, bulgarian]{babel}
+\usepackage[active]{srcltx} % SRC Specials
+\usepackage{enumerate}
+
+\vfuzz2pt % Don't report small over-full v-boxes
+
+\theoremstyle{definition}
+\newtheorem{zadd}{Задача}
+
+\setlength{\textwidth}{18.5cm} \setlength{\textheight}{10in}
+\setlength{\topmargin}{-0.5cm} \setlength{\voffset}{-0.5in}
+\setlength{\hoffset}{-0.5in}
+\parindent 0.5cm
+\oddsidemargin 0in \evensidemargin 0in \pagestyle{empty}
+
+\newfont{\bbb}{msbm10}
+\def\ZZ{\mbox{\bbb Z}}
+\def\NN{\mbox{\bbb N}}
+\def\RR{\mbox{\bbb R}}
+\def\CC{\mbox{\bbb C}}
+\def\FF{\mbox{\bbb F}}
+\def\QQ{\mbox{\bbb Q}}
+\def\Im{\mathop{\rm Im}}
+\def\Re{\mathop{\rm Re}}
+
+
+\def\KONTROLNO{\bf\Large <*info*>}
+\def\Variant{}
+\def\Specialnost{<*spec*>}
+\def\deadline{<*date*>}
+\def\FN{\hfil{<*FN*>}\hfil}
+\def\gr{\hfil{\bf <*gr*>}\hfil}
+\def\potok{\hfil{\bf II}\hfil}
+\def\kurs{\hfil{\bf 1}\hfil}
+\def\name{\hfil{\bf <*name*>}\hfil}
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\centerline{\vbox{\offinterlineskip\halign{\vrule#&&\,#\,&\vrule#\cr
+\multispan{13}\hrulefill\cr &вариант&&ф.
+номер&&група&&поток&&курс&&\hfil специалност\hfil&&\cr
+\multispan{13}\hrulefill\cr &\vrule width0pt depth6pt
+height12pt\hfil{\bf\large \Variant}\hfil&&\FN\strut&&\gr
+&&\potok&&\kurs&&\hfil\hspace{50pt}{\bf \Specialnost}\hspace{50pt}\hfil&&\cr
+\multispan{13}\hrulefill\cr &\vrule width0pt depth6pt
+height12pt\hfil Име:\hfil&&
+\multispan{9}\hfil{\bf \name}\hfil&&\cr
+\multispan{13}\hrulefill\cr}}}
+
+\vspace{1cm} \centerline{\KONTROLNO}
+
+\centerline{спец. \Specialnost}
+%
+\centerline{\deadline}
+
+\begin{zadd}
+Да се намерят базисите на сумата и сечението на $U$ и $V$, където:
+\begin{equation*}
+<*random_linear_system*>
+\end{equation*}
+\begin{equation*}
+\text{ и }U\text{ е линейната обвивка на векторите:}\ \ 
+<*random_vectors*>
+\end{equation*}
+\end{zadd}
+
+\bigskip
+
+\begin{zadd}
+Да се реши матричното уравнение:
+$$
+\begin{pmatrix}1 & 1 & 1 & 1 & 1\cr 1 & 1 & 1 & 1 & 0\cr 1 & 1 & 1 & 0 & 0\cr 1 & 1 & 0 & 0 & 0\cr 1 & 0 & 0 & 0 & 0\end{pmatrix}.X.\begin{pmatrix}1 & 1 & 1 & 1 & 1\cr 0 & 1 & 1 & 1 & 1\cr 0 & 0 & 1 & 1 & 1\cr 0 & 0 & 0 & 1 & 1\cr 0 & 0 & 0 & 0 & 1\end{pmatrix}=<*random_matrix*>
+$$
+\end{zadd}
+
+\bigskip
+
+\begin{zadd}
+Нека $\varphi \in Hom(\QQ^4) $, който спрямо даден базис има матрица А:
+$$
+A=<*random_matrix2*>
+$$
+намерете базиси на $Ker\varphi$ и $Im\varphi$.
+\end{zadd}
+
+\bigskip
+
+\begin{zadd}
+Да се намерят $1\text{-мерните}$ $\varphi\text{-инвариантните}$ подпространства на $\QQ^3$, ако линейният оператор $\varphi \in Hom(\QQ^3) $ има матрица А:
+$$
+<*random_matrix1*>
+$$
+спрямо даден базис.
+\end{zadd}
+\end{document}
