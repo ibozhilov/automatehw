@@ -22,7 +22,7 @@ func Write(txt, fn, gr, spec, name, info, date string) string {
 	txt = WriteRandomMatrix(txt, fn)
 	txt = WriteRandomLinearSystem(txt, fn)
 	txt = WriteVector(txt, fn)
-	txt = GenerateRandomMatrix(txt, fn)
+	txt = GenerateRandomMatrix4x4(txt, fn)
 	txt = GenerateRandomMatrixOfOperator(txt, fn)
 	return txt
 }
