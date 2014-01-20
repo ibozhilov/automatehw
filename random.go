@@ -1,7 +1,7 @@
 package automatehw
 
 import (
-	"fmt"
+	//"fmt"
 	"math"
 	"math/rand"
 	"strconv"
@@ -114,7 +114,7 @@ func GenerateVectors(fn string, dim int, n int, positive bool) [][]int {
 		for i := 0; i < n; i++ {
 			vector = []int{0, 0, 0, 0}
 			if i > 0 {
-				fmt.Println(IsLinearIndependent(vectors[0], vector))
+				//fmt.Println(IsLinearIndependent(vectors[0], vector))
 				for !IsLinearIndependent(vectors[0], vector) {
 					vector = []int{}
 					for t := 0; t < dim; t++ {
@@ -130,7 +130,7 @@ func GenerateVectors(fn string, dim int, n int, positive bool) [][]int {
 				}
 			}
 			vectors = append(vectors, vector)
-			fmt.Println(vectors)
+			//fmt.Println(vectors)
 		}
 	}
 	return vectors

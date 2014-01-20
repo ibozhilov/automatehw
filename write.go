@@ -22,9 +22,14 @@ func Write(txt, fn, gr, spec, name, info, date string) string {
 	txt = WriteRandomMatrix(txt, fn)
 	txt = WriteRandomLinearSystem(txt, fn)
 	txt = WriteVector(txt, fn)
-	txt = GenerateRandomMatrix4x4(txt, fn)
+	txt = WriteMatrix4x4(txt, fn)
 	txt = GenerateRandomMatrixOfOperator(txt, fn)
 	return txt
+}
+
+//Replace <*random_matrix3*> with the Generated 4 by 4 matrix
+func WriteMatrix4x4(txt, fn string) string {
+	return strings.Replace(txt, `<*random_matrix3*>`, MaximaMatrixToLaTeX(GenerateMatrix4x4(fn), fn), 1)
 }
 
 //Write the FN of the student in the document
@@ -112,10 +117,12 @@ func WriteVectors(txt, fn string) string {
 }
 
 func WriteVector(txt, fn string) string {
-	vector := GenerateVectors(fn, 4, 3, false)
+	vector := GenerateVectors(fn, 4, 2, false)
+	intfn, _ := strconv.ParseInt(fn, 10, 0)
+	n := int(intfn) % 3
 	txt = strings.Replace(txt, `<*random_vector*>`, VectorToString(vector[0]), 1)
+	txt = strings.Replace(txt, `<*random_vector*>`, VectorToString(GetPerpendicular4x4(vector[0], n)), 1)
 	txt = strings.Replace(txt, `<*random_vector*>`, VectorToString(vector[1]), 1)
-	txt = strings.Replace(txt, `<*random_vector*>`, VectorToString(vector[2]), 1)
 	return txt
 }
 
