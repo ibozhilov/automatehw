@@ -4,25 +4,15 @@ package automatehw
 
 //Check whether two vectors are perpendiculat
 func IsPerpendicular(vector1, vector2 []int) bool {
-	if len(vector1) != len(vector2) {
-		panic("The two vectors have different dimension")
-	}
-	var product int
-	for i, value := range vector1 {
-		product = product + vector2[i]*value
-	}
-	if product == 0 {
+	if ScalarProductOfVectors(vector1, vector2) == 0 {
 		return true
 	}
 	return false
 }
 
-//Check whether the two vectors are linear dependent
+//Check whether the two vectors are linear independent
 func IsLinearIndependent(vector1, vector2 []int) bool {
-	//fmt.Println("hey")
-	if len(vector1) != len(vector2) {
-		panic("The two vectors have different dimension")
-	}
+	checkVectorsLength(vector1, vector2)
 	var coef float32
 	coef = float32(vector1[0]) / float32(vector2[0])
 	for i, value := range vector1 {
@@ -33,8 +23,8 @@ func IsLinearIndependent(vector1, vector2 []int) bool {
 	return false
 }
 
-//returns a perpendicular vector to a given one, by simply swithing the places of the coordinates of the vector two by two
-// and chaneging the sign
+//Returns a perpendicular vector to a given one, by simply switching the places of the coordinates of the vector two by two
+// and changeing the sign
 func GetPerpendicular(vector1 []int) []int {
 	var vector []int
 	dim := len(vector1)
@@ -63,8 +53,8 @@ func GetPerpendicular(vector1 []int) []int {
 	return vector
 }
 
-//returns a perpendicular vector to a 4x4 one, through one of the three methods
-func GetPerpendicular4x4(vector1 []int, n int) []int {
+//Returns a perpendicular vector to a 4 dimensional one, through one of the three methods
+func GetPerpendicular4(vector1 []int, n int) []int {
 	if len(vector1) != 4 {
 		panic("The length of the vector is greater or less than 4!")
 	}
@@ -77,4 +67,31 @@ func GetPerpendicular4x4(vector1 []int, n int) []int {
 		return []int{(-1) * vector1[3], vector1[2], (-1) * vector1[1], vector1[0]}
 	}
 	return []int{}
+}
+
+//Calculates the scalar product of two vectors
+func ScalarProduct(vector1, vector2 []int) int {
+	var product int
+	checkVectorsLength(vector1, vector2)
+	for i := range vector1 {
+		product = product + vector1[i]*vector2[i]
+	}
+	return product
+}
+
+//Return the sum of two vectors
+func sumVectors(vector1, vector2 []int) []int {
+	var sum []int
+	checkVectorsLength(vector1, vector2)
+	for i := range vector1 {
+		sum = append(sum, vector1[i]+vector2[i])
+	}
+	return sum
+}
+
+//Check whether the two vectors have the same lenght. If not raise an exception
+func checkVectorsLength(vector1, vector2 []int) {
+	if len(vector2) != len(vector1) {
+		panic("Could not sum the vectors! The two vectors has different dimension!")
+	}
 }
