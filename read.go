@@ -14,10 +14,9 @@ type Student struct {
 
 //Generate array of Students from inputfile
 func Read(filepath string) []Student {
-	fnTemplate := regexp.MustCompile(`([0-9][0-9][0-9][0-9][0-9])|([0-9][0-9][0-9][0-9][0-9])`)
-	nameTemplate := regexp.MustCompile(`[А-я]+,[А-я]+,[А-я]+`)
-	groupTemplate := regexp.MustCompile(`Група,[0-9]`)
-	number := regexp.MustCompile(`[0-9]`)
+	fnTemplate := regexp.MustCompile(`\d{5,6}`)
+	nameTemplate := regexp.MustCompile(`[А-я]+ [А-я]+ [А-я]+`)
+	groupTemplate := regexp.MustCompile(`Група (\d)`)
 	bytelist, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		panic(err)
@@ -32,7 +31,7 @@ func Read(filepath string) []Student {
 		}
 		fn = fnTemplate.FindString(line)
 		name = strings.Replace(nameTemplate.FindString(line), ",", " ", -1)
-		group = number.FindString(groupTemplate.FindString(line))
+		group = groupTemplate.FindStringSubmatch(line)[1]
 		studentList = append(studentList, Student{name, fn, group})
 		line = ""
 	}
